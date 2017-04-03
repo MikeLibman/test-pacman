@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     // structs
 
     // public variables
-    public ScoreManager m_ScoreManager;
 
     // private variables
     private static GameManager m_Instance = null;
@@ -32,6 +31,12 @@ public class GameManager : MonoBehaviour
     private GameObject m_Pellet;
     [SerializeField]
     private GameObject m_PowerPellet;
+    [SerializeField]
+    private ScoreManager m_ScoreManager;
+    [SerializeField]
+    private InputManager m_InputManager;
+    [SerializeField]
+    private GameFlowManager m_FlowManager;
 
     private List<BasePickup> m_Pellets = new List<BasePickup>();
 
@@ -73,7 +78,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public GameFlowManager FlowManager // Returns the flow manager
+    {
+        get
+        {
+            return m_FlowManager;
+        }
+    }
 
+    public InputManager InputManager // Returns the input manager
+    {
+        get
+        {
+            return m_InputManager;
+        }
+    }
     #endregion
 
     #region Unity API
@@ -119,7 +138,7 @@ public class GameManager : MonoBehaviour
         // If list is empty
         if (m_Pellets.Count == 0)
         {
-            Debug.Log("Winner"); // Winner, winner
+            m_FlowManager.GameWon();
         }
     }
 

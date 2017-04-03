@@ -8,6 +8,7 @@
 //
 
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
@@ -38,6 +39,8 @@ public class PlayerController : MonoBehaviour
 
     // properties
 
+    public float target = 180;
+
     #endregion
 
     #region Unity API
@@ -49,30 +52,15 @@ public class PlayerController : MonoBehaviour
 	
 	void Update () 
 	{
-        if (Input.GetKeyDown(KeyCode.W))
+        // If game has not started or is paused...
+        if (!GameManager.Instance.FlowManager.HasGameStarted || GameManager.Instance.FlowManager.IsGamePaused)
         {
-            m_MoveDirection = Vector2.up;
+            m_AudioSource.Stop(); // Cut audio
 
-            transform.eulerAngles = new Vector3(0, 0, 90);
+            return; // Don't continue update
         }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            m_MoveDirection = Vector2.left;
 
-            transform.eulerAngles = new Vector3(0, 0, 180);
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            m_MoveDirection = Vector2.down;
-
-            transform.eulerAngles = new Vector3(0, 0, 270);
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            m_MoveDirection = Vector2.right;
-
-            transform.eulerAngles = new Vector3(0, 0, 0);
-        }
+        ApplyMovement();
 
         m_Animator.SetBool("IsCollidingWithWall", m_IsCollidingWithWall); // Set animation based on if player is moving or not
 
@@ -108,15 +96,34 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    #region Public Methods
-
-    #endregion
-
-    #region Protected Methods
-
-    #endregion
-
     #region Private Methods
+    /// <summary>
+    /// Apply movement direction and rotation
+    /// to player game object
+    /// </summary>
+    private void ApplyMovement()
+    {
+        float zRotation = transform.rotation.z;
 
+        m_MoveDirection = GameManager.Instance.InputManager.MoveDirection;
+        if (m_MoveDirection.Equals(Vector2.up))
+        {
+            zRotation =  90;
+        }
+        else if (m_MoveDirection.Equals(Vector2.left))
+        {
+            zRotation = 180;
+        }
+        else if (m_MoveDirection.Equals(Vector2.down))
+        {
+            zRotation = 270;
+        }
+        else if (m_MoveDirection.Equals(Vector2.right))
+        {
+            zRotation = 0;
+        }
+
+        transform.eulerAngles = new Vector3(0, 0, zRotation);
+    }
     #endregion
 }
