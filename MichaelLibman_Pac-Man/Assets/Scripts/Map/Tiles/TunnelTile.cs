@@ -6,13 +6,7 @@
 //   Michael Libman
 //
 
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using System.Collections;
-using System.Collections.Generic;
-
-public class TunnelTile : BaseTile 
+public class TunnelTile : BaseTile
 {
     #region Members & Properties
     // consts
@@ -46,13 +40,5 @@ public class TunnelTile : BaseTile
     {
         base.AddComponents();
     }
-    #endregion
-
-    #region Protected Methods
-
-    #endregion
-
-    #region Private Methods
-
     #endregion
 }

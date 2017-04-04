@@ -8,9 +8,6 @@
 
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using System.Collections;
 using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour 
@@ -49,7 +46,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public GameObject Pellet // Holds the pellet prefab for the spawner tile
+    // Holds the pellet prefab for the spawner tile
+    public GameObject Pellet 
     {
         get
         {
@@ -57,7 +55,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public GameObject PowerPellet // Holds the power pellet prefab for the spawner tile
+    // Holds the power pellet prefab for the spawner tile
+    public GameObject PowerPellet 
     {
         get
         {
@@ -65,7 +64,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public ScoreManager ScoreManager // Holds the score manager
+    // Holds the score manager
+    public ScoreManager ScoreManager 
     {
         set
         {
@@ -78,7 +78,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public GameFlowManager FlowManager // Returns the flow manager
+    // Returns the flow manager
+    public GameFlowManager FlowManager 
     {
         get
         {
@@ -86,7 +87,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public InputManager InputManager // Returns the input manager
+    // Returns the input manager
+    public InputManager InputManager 
     {
         get
         {
@@ -150,17 +152,5 @@ public class GameManager : MonoBehaviour
     {
         m_Pellets.Clear();
     }
-    #endregion
-
-    #region Protected Methods
-
-    #endregion
-
-    #region Private Methods
-
-    #endregion
-
-    #region Interface Implementations
-
     #endregion
 }

@@ -7,11 +7,6 @@
 //
 
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using System.Collections;
-using System.Collections.Generic;
-using System;
 
 public class BasePickup : Pickup 
 {
@@ -87,13 +82,5 @@ public class BasePickup : Pickup
     {
         GameManager.Instance.UnregisterPellet(this);
     }
-    #endregion
-
-    #region Protected Methods
-
-    #endregion
-
-    #region Private Methods
-
     #endregion
 }

@@ -84,12 +84,13 @@ public class GameFlowManager : MonoBehaviour
         m_HasGameStarted = true;
         m_IsGameOver = false;
 
+        // Turn off game status images
         m_StartImage.enabled = false;
         m_ReadyImage.enabled = false;
         m_ClearImage.enabled = false;
         m_GameOverImage.enabled = false;
 
-        GameManager.Instance.ScoreManager.GameScore = 0;
+        GameManager.Instance.ScoreManager.GameScore = 0; // Reset score
     }
 
     /// <summary>

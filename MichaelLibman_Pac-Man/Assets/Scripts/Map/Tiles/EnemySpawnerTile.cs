@@ -1,16 +1,10 @@
 ﻿//
 // EnemySpawnerTile.cs: 
-//   [SUMMARY OF SCRIPT]
+//   Handles where enemies can spawn
 //
 // Author:
 //   Michael Libman
 //
-
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using System.Collections;
-using System.Collections.Generic;
 
 public class EnemySpawnerTile : BaseTile 
 {
@@ -31,21 +25,11 @@ public class EnemySpawnerTile : BaseTile
     #region Unity API
     private void Awake()
     {
-        gameObject.name = "EnemySpawner";
+        gameObject.name = "Empty";
         m_CollisionType = MapInfo.CollisionTypes.ENEMY_SPAWN;
 
         AddComponents();
     }
-
-    void Start () 
-	{
-		
-	}
-	
-	void Update () 
-	{
-		
-	}
     #endregion
 
     #region Public Methods
@@ -53,17 +37,5 @@ public class EnemySpawnerTile : BaseTile
     {
         base.AddComponents();
     }
-    #endregion
-
-    #region Protected Methods
-
-    #endregion
-
-    #region Private Methods
-
-    #endregion
-
-    #region Interface Implementations
-
     #endregion
 }

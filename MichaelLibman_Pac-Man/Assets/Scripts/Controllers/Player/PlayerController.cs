@@ -1,18 +1,13 @@
 ﻿//
 // PlayerController.cs: 
 //   Handles the player movement, collisions,
-///  animations and SFX
+//   animations and SFX
 //
 // Author:
 //   Michael Libman
 //
 
 using UnityEngine;
-using UnityEngine.Assertions;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using System.Collections;
-using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour 
 {
@@ -38,9 +33,6 @@ public class PlayerController : MonoBehaviour
     private AudioSource m_AudioSource;
 
     // properties
-
-    public float target = 180;
-
     #endregion
 
     #region Unity API
@@ -61,20 +53,6 @@ public class PlayerController : MonoBehaviour
         }
 
         ApplyMovement();
-
-        m_Animator.SetBool("IsCollidingWithWall", m_IsCollidingWithWall); // Set animation based on if player is moving or not
-
-        // If player is not touching a wall
-        if (!m_IsCollidingWithWall)
-        {
-            transform.Translate(m_MoveDirection * Time.deltaTime * m_MovementSpeed, Space.World); // Move in the chosen direction
-            
-            // If the SFX is not playing ...
-            if (!m_AudioSource.isPlaying)
-            {
-                m_AudioSource.Play(); // Play it
-            }
-        }
     }
 
     void OnCollisionEnter2D(Collision2D _collider)
@@ -106,6 +84,22 @@ public class PlayerController : MonoBehaviour
         float zRotation = transform.rotation.z;
 
         m_MoveDirection = GameManager.Instance.InputManager.MoveDirection;
+
+        m_Animator.SetBool("IsCollidingWithWall", m_IsCollidingWithWall); // Set animation based on if player is moving or not
+
+        // If player is not touching a wall
+        if (!m_IsCollidingWithWall)
+        {
+            transform.Translate(m_MoveDirection * Time.deltaTime * m_MovementSpeed, Space.World); // Move in the chosen direction
+
+            // If the SFX is not playing ...
+            if (!m_AudioSource.isPlaying)
+            {
+                m_AudioSource.Play(); // Play it
+            }
+        }
+
+        // Set rotation of character depending on the move direction
         if (m_MoveDirection.Equals(Vector2.up))
         {
             zRotation =  90;

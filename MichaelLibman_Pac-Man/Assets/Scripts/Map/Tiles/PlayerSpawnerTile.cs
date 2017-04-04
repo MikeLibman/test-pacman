@@ -1,16 +1,10 @@
 ﻿//
 // PlayerSpawnerTile.cs: 
-//   [SUMMARY OF SCRIPT]
+//   Handle where the player will spawn
 //
 // Author:
 //   Michael Libman
 //
-
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using System.Collections;
-using System.Collections.Generic;
 
 public class PlayerSpawnerTile : BaseTile 
 {
@@ -31,21 +25,11 @@ public class PlayerSpawnerTile : BaseTile
     #region Unity API
     private void Awake()
     {
-        gameObject.name = "PlayerSpawner";
+        gameObject.name = "Empty";
         m_CollisionType = MapInfo.CollisionTypes.PLAYER_SPAWN;
 
         AddComponents();
     }
-
-    void Start () 
-	{
-		
-	}
-	
-	void Update () 
-	{
-		
-	}
     #endregion
 
     #region Public Methods
@@ -53,17 +37,5 @@ public class PlayerSpawnerTile : BaseTile
     {
         base.AddComponents();
     }
-    #endregion
-
-    #region Protected Methods
-
-    #endregion
-
-    #region Private Methods
-
-    #endregion
-
-    #region Interface Implementations
-
     #endregion
 }

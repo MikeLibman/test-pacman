@@ -34,12 +34,13 @@ public class ScoreManager : MonoBehaviour
         {
             m_GameScore = value;
 
+            // Don't let score be negative
             if (m_GameScore < 0)
             {
                 m_GameScore = 0;
             }
 
-            m_GameScoreText.text = GameScore.ToString();
+            m_GameScoreText.text = GameScore.ToString(); // Set score text to the proper score
         }
 
         get
@@ -55,5 +56,4 @@ public class ScoreManager : MonoBehaviour
         Assert.IsNotNull(m_GameScoreText, "Put the game score text in the score manager");
     }
 	#endregion
-
 }

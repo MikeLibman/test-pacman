@@ -12,7 +12,8 @@ public class MapInfo
     // consts
 
     // enums
-    public enum CollisionTypes // Possible types of collision
+    // Possible types of collision
+    public enum CollisionTypes
     {
         WALL,
         EMPTY,
@@ -26,7 +27,8 @@ public class MapInfo
     }
 
     // structs
-    public struct TileTypes // Types of tiles that can be parsed by the level creator
+    // Types of tiles that can be parsed by the level creator
+    public struct TileTypes 
     {
         public const string DELIMITER = " ";
 

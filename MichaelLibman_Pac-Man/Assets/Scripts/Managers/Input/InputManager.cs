@@ -14,6 +14,7 @@ public class InputManager : MonoBehaviour
     // consts
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
+
     // enums
 
     // structs
@@ -36,6 +37,11 @@ public class InputManager : MonoBehaviour
     #region Unity API
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         // If game is over, end game
         if (GameManager.Instance.FlowManager.IsGameOver)
         {
@@ -78,21 +84,5 @@ public class InputManager : MonoBehaviour
             m_MoveDirection = Vector2.right;
         }
     }
-	#endregion
-
-	#region Public Methods
-
-	#endregion
-
-	#region Protected Methods
-
-	#endregion
-
-	#region Private Methods
-
-	#endregion
-
-	#region Interface Implementations
-
 	#endregion
 }

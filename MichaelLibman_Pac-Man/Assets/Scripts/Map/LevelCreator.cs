@@ -8,14 +8,12 @@
 //
 
 using UnityEngine;
-using System.IO;
 using System.Text.RegularExpressions;
 
 public class LevelCreator : MonoBehaviour 
 {
     #region Members & Properties
     // consts
-    private const string MAP_FILE_EXTENSION = ".txt";
 
     // enums
 
@@ -53,7 +51,9 @@ public class LevelCreator : MonoBehaviour
     /// <returns>Returns the contents of the file</returns>
     private string ReadMap()
     {
-        return File.ReadAllText(Application.dataPath + "\\" + m_MapFolderLocation + "\\" + m_MapTextFileName + MAP_FILE_EXTENSION);
+        TextAsset mapFile = (TextAsset)Resources.Load(m_MapFolderLocation + "\\" + m_MapTextFileName); // Get text asset from resources folder
+
+        return mapFile.text; // Return contents of map file
     }
 
     /// <summary>
